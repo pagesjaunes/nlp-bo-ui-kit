@@ -1,0 +1,38 @@
+{
+  "name": "component-labelliser",
+  "description": "React Typescript Component for labellisation of natural language processing",
+  "version": "1.0.0",
+  "main": "build/index.js",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "license": "Apache-2.0",
+  "licenses": [
+    {
+      "type": "Apache-2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
+  "types": "build/index.d.ts",
+  "dependencies": {
+    "fuse.js": "^3.4.5",
+    "react": "^16.8.6",
+    "react-clickout-handler": "^1.2.1",
+    "react-scripts-ts": "3.1.0"
+  },
+  "scripts": {
+    "start": "react-scripts-ts start",
+    "build": "react-scripts-ts build",
+    "serve": "serve -s ./build",
+    "test": "react-scripts-ts test",
+    "eject": "react-scripts-ts eject"
+  },
+  "devDependencies": {
+    "@types/node": "^11.13.18",
+    "@types/react": "^16.8.23",
+    "react-dom": "^16.8.6",
+    "@types/react-dom": "^16.8.4",
+    "typescript": "^3.5.3"
+  }
+}
