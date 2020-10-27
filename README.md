@@ -2,7 +2,7 @@
 
 nlp-bo-ui-kit is a React Typescript component for labellisation of natural language processing.
 
-![](https://cloud.githubusercontent.com/assets/1412392/5339491/c40de124-7ee1-11e4-9f07-9276e2545f27.png)
+![](/src/example/example-edit.png)
 
 ## Installation
 
@@ -85,10 +85,18 @@ You can also unselect words by clicking outside of the component, or by clicking
 (if first or last, only unselect it, if in between, unselect all)
 - After selecting an expression, a pop-in is displayed, which allows you to see the list of available labels.
 Click on one label to attribute it to the selection. You also have an input the search for a label by name.
+
+![](/src/example/example-edit.png)
+
 - Each expression already associated to a label is highlighted in the same color as the label in the pop-in.
 - Under the sentence, there is a summary of the expressions with a label. For each, you can choose to delete it.
+
+![](/src/example/example-labelled.png)
+
 - In readonly mode, only the prelabelling passed as a property is displayed through the highlights on the sentence.
  The summary below is hidden and all interactions are disabled.
+
+![](/src/example/example-readonly.png)
 
 Reconciliation :
 
@@ -109,7 +117,7 @@ or if the indexes are indicated but slightly shifted, a fuzzy-search of the expr
 
 The `index.tsx` and `example/` folder contain an example project.
 
-![](/src/example/example-edit.png)
+![](/src/example/example-full.png)
 
 The scripts for the project can be managed with *npm* or *yarn*.
 
