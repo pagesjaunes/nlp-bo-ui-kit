@@ -60,52 +60,47 @@ class Example extends React.Component<{}, State> {
 
 The Labelliser requires 3 mandatory properties, as shown above.
 
-These properties are sentence: string (sentence that needs to be labelled)
+You need to pass the `sentence` as a string that needs to be labelled.
 
-prelabelled: IPrelabelled | IWord : a list describing an already existing labellisation that has to be taken into account at the start of the component.
+In `prelabelled` you can fill in a list describing an external labellisation that has to be taken into account at the start of the component.
 
-wordlistCallback: a callback called by the component each time a modification is done in it, to get the result in the parent component.
+You can use `wordlistCallback` which acts like an event handler and fires each time a modification is done in the labelling, to get the result in the parent component and do whatever treatment you need with it.
 
 There are also 4 optional properties :
 
-labelList: ILabel[], the list of labels that can be attributed to an expression for the labelling.
-
-colorList: string[], a list of names of hexadecimal codes for the colors that will be associated to each label.
-
-readonly: boolean, default is false, determines wether the component can be used to edit the labelling of a sentence or just to show it.
-
-copyToClipBoard: boolean, default is true, show a button to copy the sentence to the clipboard.
+- `labelList` is the list of labels that can be attributed to an expression for the labelling
+- `colorList`is the list of names or hexadecimal codes for the colors that will be associated to each label
+- `readonly` determines wether the component can be used to edit the labelling of a sentence or just to display it, set by default to false
+- `copyToClipBoard` shows a button to copy the sentence to the clipboard, set by default to true
 
 ## Functionalities
 
-Module functionalities :
+### Component functionalities :
 - In edit mode, each word is clickable. You can select one word by clicking on it.
 If you click on 2 different words, it will select them and all the words in between.
-You can also unselect words by clicking outside of the component, or by clicking on an already selected word.
-(if first or last, only unselect it, if in between, unselect all)
+You can also unselect words by clicking outside of the component, or by clicking on an already selected word
+(if you unselect the first or last word, it only unselect it, but if you select a word in between them, it will unselect all the words).
 - After selecting an expression, a pop-in is displayed, which allows you to see the list of available labels.
 Click on one label to attribute it to the selection. You also have an input the search for a label by name.
 
 ![](/src/example/example-edit.png)
 
-- Each expression already associated to a label is highlighted in the same color as the label in the pop-in.
-- Under the sentence, there is a summary of the expressions with a label. For each, you can choose to delete it.
+- Each expression already associated to a label is highlighted in the same color as the label that is in the pop-in.
+- Under the sentence, there is a summary of the expressions with a label. For each of them, you can choose to delete the attributed label.
 
 ![](/src/example/example-labelled.png)
 
 - In readonly mode, only the prelabelling passed as a property is displayed through the highlights on the sentence.
- The summary below is hidden and all interactions are disabled.
+ The summary usually below is hidden and all interactions are disabled.
 
 ![](/src/example/example-readonly.png)
 
-Reconciliation :
+### Reconciliation :
 
 There is a system of reconciliation in the code when describing a prelabelling.
 
-It means that if the expression passed isn't exactly matching the sentence 
-(aka case-sensitive, special chars, typing errors, spaces/dashes bad fit)
-or if the indexes are indicated but slightly shifted, a fuzzy-search of the expression in the sentence occurs
- to rematch it and obtain accurate data for the labelling.
+It means that if the expression passed isn't exactly matching the sentence (for example: case-sensitive, special chars, typing errors, spaces or dashes bad fit)
+or if the indexes are indicated but slightly shifted, a fuzzy-search of the expression in the sentence occurs to rematch it and obtain accurate data for the labelling.
  
 *(Ex: if the sentence is **"Médecin à Saint-Martin"** and the prelabelling specifies a label "ou" on the expression **"saintmartin"** 
  the reconciliation will match the part of the sentence **"Saint-Martin"** as the accurate data.)*
