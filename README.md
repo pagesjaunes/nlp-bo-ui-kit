@@ -1,6 +1,6 @@
 # nlp-bo-ui-kit
 
-nlp-bo-ui-kit (*Natural Language Processing Back Office User Interface Kit*) is a React Typescript component for labeling of natural language processing.
+nlp-bo-ui-kit (*Natural Language Processing Back Office User Interface Kit*) is a [React](https://reactjs.org/) [Typescript](https://www.typescriptlang.org/) component for labelling of natural language processing.
 
 ![](/src/example/example-edit.png)
 
@@ -8,19 +8,19 @@ nlp-bo-ui-kit (*Natural Language Processing Back Office User Interface Kit*) is 
 
 Download the repository. The source code is in the `src/` folder. You will need to import the files from the subfolders `components/`, `interfaces/` and `utils/`.
 
-You will also need to import the index.css located in the `style/` subfolder.
+You will also need to import the `index.css` file located in the `style/` subfolder.
 
-Don't forget to install the inner dependencies by adding them in your `package.json`.
+Don't forget to install the inner dependencies by adding them to your `package.json`.
 
-You will need the following packages : react-clickout-handler and fuse.js.
+You will need the following packages: [react-clickout-handler](https://www.npmjs.com/package/react-clickout-handler) and [fuse.js](https://fusejs.io/).
 
 ## Usage
 
-The main component of this kit is the Labelliser. Its basic use can be described with :
+The main component of this kit is the Labeller. Its basic use can be described with:
 
 ```typescript jsx
 import * as React from "react";
-import Labelliser from "./components/Labelliser";
+import Labeller from "./components/Labeller";
 
 interface State {
     currentLabelling: IResponse
@@ -46,7 +46,7 @@ class Example extends React.Component<{}, State> {
     };
 
     render() {
-        return (<Labelliser
+        return (<Labeller
                     sentence={sentenceToLabel}
                     prelabelled={preLabelling}
                     wordListCallback={this.callback}
@@ -58,27 +58,27 @@ class Example extends React.Component<{}, State> {
 
 ## Configuration
 
-The Labelliser requires 3 mandatory properties, as shown above.
+The Labeller requires 3 mandatory properties, as shown above.
 
 You need to pass the `sentence` as a string that needs to be labelled.
 
-In `prelabelled` you can fill in a list describing an external labellisation that has to be taken into account at the start of the component.
+In `prelabelled` you can fill in a list describing an external labelling that has to be taken into account at the start of the component.
 
-You can use `wordlistCallback` which acts like an event handler and fires each time a modification is done in the labelling, to get the result in the parent component and do whatever treatment you need with it.
+You can use `wordlistCallback` which acts like an event handler and fires each time a modification is done in the component, to get the result in the parent and treat it accordingly.
 
-There are also 4 optional properties :
+There are also 4 optional properties:
 
 - `labelList` is the list of labels that can be attributed to an expression for the labelling
 - `colorList`is the list of names or hexadecimal codes for the colors that will be associated to each label
 - `readonly` determines wether the component can be used to edit the labelling of a sentence or just to display it, set by default to false
 - `copyToClipBoard` shows a button to copy the sentence to the clipboard, set by default to true
 
-## Functionalities
+## Features
 
-### Component functionalities :
+### Component features
 - In edit mode, each word is clickable. You can select one word by clicking on it.
 If you click on 2 different words, it will select them and all the words in between.
-You can also unselect words by clicking outside of the component, or by clicking on an already selected word
+- You can also unselect words by clicking outside of the component, or by clicking on an already selected word
 (if you unselect the first or last word, it only unselect it, but if you select a word in between them, it will unselect all the words).
 - After selecting an expression, a pop-in is displayed, which allows you to see the list of available labels.
 Click on one label to attribute it to the selection. You also have an input the search for a label by name.
@@ -95,26 +95,27 @@ Click on one label to attribute it to the selection. You also have an input the 
 
 ![](/src/example/example-readonly.png)
 
-### Reconciliation :
+### Reconciliation
 
 There is a system of reconciliation in the code when describing a prelabelling.
 
-It means that if the expression passed isn't exactly matching the sentence (for example: case-sensitive, special chars, typing errors, spaces or dashes bad fit)
-or if the indexes are indicated but slightly shifted, a fuzzy-search of the expression in the sentence occurs to rematch it and obtain accurate data for the labelling.
+It is meant to find the accurate labelling of a given expression in the sentence.
+
+This feature is present because the prelabelling can sometimes be wrong and thus we will lose the information,
+like when the case, accentuation or spacing isn't preserved or when there are typing errors in the labelled expression.
+
+To solve this, a fuzzy-search of the labelled expression is performed in the sentence to rematch the accurate data for the labelling.
  
-*(Ex: if the sentence is **"Médecin à Saint-Martin"** and the prelabelling specifies a label "ou" on the expression **"saintmartin"** 
+*(Ex: if the sentence is **"Médecin à Saint-Martin"** and the prelabelling specifies a labelling on the expression **"saintmartin"** 
  the reconciliation will match the part of the sentence **"Saint-Martin"** as the accurate data.)*
- 
- There is a set of Jest tests written for this part of the code. They are located in the subfolder `tests/` and can 
- be run with the command `npm run test` or `yarn start`.
 
 ## Example
 
-The `index.tsx` and `example/` folder contain an example project.
+An example project can be rendered with the `index.tsx` file and the `example/` subfolder.
 
 ![](/src/example/example-full.png)
 
-The scripts for the project can be managed with *npm* or *yarn*.
+The scripts for this project can be managed with [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/).
 
 You will first need to install the dependencies with `npm i` or `yarn install`.
 
@@ -131,6 +132,13 @@ And then serve it locally or on a distant server with `npm run serve` or `yarn s
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
+
+## Contributors
+- Delphine Godet [(@Yamin0)](https://github.com/Yamin0)
+
+- Kylian Balan [(@Kilio22)](https://github.com/Kilio22)
+
+- Gwendal Bazin [(@Bazni)](https://github.com/Bazni)
 
 ## License
 Licensed under MIT license, see [LICENSE](LICENSE) for the full license.

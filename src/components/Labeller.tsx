@@ -62,7 +62,7 @@ const labelList: ILabel[] = [
 ];
 const colorArray = ['#8dd3c7','#ffffb3','#bebada','#fb8072','#80b1d3','#fdb462','#b3de69','#fccde5','#d9d9d9','#bc80bd','#ccebc5','#ffed6f'];
 
-interface ILabelliserProps {
+interface ILabellerProps {
   colorList: string[]; // liste des couleurs
   labelList: ILabel[]; // liste des labels
   sentence: string; // phrase à labelliser
@@ -72,10 +72,10 @@ interface ILabelliserProps {
   wordListCallback(wordList: IResponse): void; // callback pour que le composant parent accède aux données de labellisation
 }
 
-interface ILabelliserState {
+interface ILabellerState {
   hasResult: boolean; // indique si on affiche ou non la liste des entités labellisées (s'il y en a)
   isPopinOpen: boolean; // indique si on affiche ou non la modal de selection des labels (si elle est active)
-  selectedIds: number[]; // contient les id des mots selectionnés pour l'entité en cours de labellisation
+  selectedIds: number[]; // contient les id des mots sélectionnés pour l'entité en cours de labellisation
   wordList: IWord[]; // structure de données contenant le résultat de la labellisation de la phrase
 }
 
@@ -84,14 +84,14 @@ const hasResult = (prelabelled:  IPrelabelled[] | IWord[]): boolean => {
       || (!!(prelabelled[0] as IWord).value && (prelabelled as IWord[]).find(e => e.iob !== 'O') !== undefined))
 };
 
-class Labelliser extends React.Component<ILabelliserProps, ILabelliserState> {
+class Labeller extends React.Component<ILabellerProps, ILabellerState> {
   static defaultProps = {
     colorList: colorArray,
     labelList: labelList,
     readonly: false,
     copyToClipBoard: true
   };
-  constructor(props: ILabelliserProps) {
+  constructor(props: ILabellerProps) {
     super(props);
 
     /*
@@ -129,7 +129,7 @@ class Labelliser extends React.Component<ILabelliserProps, ILabelliserState> {
    * Si la prelabellisation n'est plus la même on réinitialise tout le composant
    * Si la structure de données interne (state.wordlist) a changé, on notifie le composant parent
    */
-  public componentDidUpdate(prevProps: Readonly<ILabelliserProps>, prevState: Readonly<ILabelliserState>, snapshot?: any): void {
+  public componentDidUpdate(prevProps: Readonly<ILabellerProps>, prevState: Readonly<ILabellerState>, snapshot?: any): void {
     if (prevProps.sentence !== this.props.sentence) {
       this.setState({
         hasResult: hasResult(this.props.prelabelled),
@@ -162,7 +162,7 @@ class Labelliser extends React.Component<ILabelliserProps, ILabelliserState> {
    */
   public render() {
     return (
-        <div className="labelliser">
+        <div className="labeller">
           <WordList
               colorList={this.props.colorList}
               wordArray={this.state.wordList}
@@ -423,4 +423,4 @@ class Labelliser extends React.Component<ILabelliserProps, ILabelliserState> {
   }
 }
 
-export default Labelliser;
+export default Labeller;

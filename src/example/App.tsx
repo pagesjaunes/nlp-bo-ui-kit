@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './App.css';
-import Labelliser from "../components/Labelliser";
+import Labeller from "../components/Labeller";
 import IPrelabelled from "../interfaces/IPrelabelled";
 import IResponse from "../interfaces/IResponse";
 import IWord from "../interfaces/IWord";
@@ -66,7 +66,7 @@ class App extends React.Component<{}, IAppState> {
                 {
                     this.state.list.map((elem) => (
                         <div key={elem.id}>
-                            <Labelliser
+                            <Labeller
                                 sentence={elem.sentence}
                                 prelabelled={preLabellisation[elem.id]}
                                 wordListCallback={this.wordListCallback}
