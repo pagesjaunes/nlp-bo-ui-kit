@@ -1,6 +1,6 @@
 # nlp-bo-ui-kit
 
-nlp-bo-ui-kit is a React Typescript component for labellisation of natural language processing.
+nlp-bo-ui-kit (*Natural Language Processing Back Office User Interface Kit*) is a React Typescript component for labellisation of natural language processing.
 
 ![](/src/example/example-edit.png)
 
