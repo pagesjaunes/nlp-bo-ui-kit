@@ -101,8 +101,10 @@ There is a system of reconciliation in the code when describing a prelabelling.
 
 It is meant to find the accurate labelling of a given expression in the sentence.
 
-This feature is present because the prelabelling can sometimes be wrong and thus we will lose the information,
-like when the case, accentuation or spacing isn't preserved or when there are typing errors in the labelled expression.
+The prelabelling can come from different sources, depending on the use case.
+It can come from the previous or another AI model (to speed up human labelling by proposing to him/her a label which is already good 90% of the time), but there can be tokenisation or normalization differences between the different models, so the text can have some mismatch.
+It can come from a user input which enable the user to change the text (to modify the current one or creating a different one from it).
+In both cases, we would like to match the previous labelling with this slightly different sentence.
 
 To solve this, a fuzzy-search of the labelled expression is performed in the sentence to rematch the accurate data for the labelling.
  
