@@ -107,20 +107,19 @@ It can come from a user input which enable the user to change the text (to modif
 In both cases, we would like to match the previous labelling with this slightly different sentence.
 
 To solve this, a fuzzy-search of the labelled expression is performed in the sentence to rematch the accurate data for the labelling.
- 
+
 *(Ex: if the sentence is **"Médecin à Saint-Martin"** and the prelabelling specifies a labelling on the expression **"saintmartin"** 
  the reconciliation will match the part of the sentence **"Saint-Martin"** as the accurate data.)*
 
-## Example
+## Sample project
 
-An example project can be rendered with the `index.tsx` file and the `example/` subfolder.
+A sample project can be rendered with the `index.tsx` file and the `example/` subfolder.
 
 ![](/src/example/example-full.png)
 
 The scripts for this project can be managed with [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/).
 
 You will first need to install the dependencies with `npm i` or `yarn install`.
-
 
 To locally run the example, use `npm run start` or `yarn start`.
 
@@ -130,12 +129,26 @@ You can obtain a production version of the project with `npm run build` or `yarn
 
 And then serve it locally or on a distant server with `npm run serve` or `yarn serve`.
 
+## Real life examples
+
+This component is already used in two different back offices managing Natural Language Processing use cases.
+
+### Data labeling for the training of our specialized NLP model
+
+![](/src/example/example-crowd-labeling.png)
+
+### Chatbot back office connected to the more generic [Microsoft LUIS](https://www.luis.ai/) NLP service
+
+![](/src/example/example-luis-chatbot.png)
+
 ## Contributing
+
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
 
 ## Contributors
+
 - Delphine Godet [(@Yamin0)](https://github.com/Yamin0)
 
 - Kylian Balan [(@Kilio22)](https://github.com/Kilio22)
@@ -143,4 +156,5 @@ Please make sure to update tests as appropriate.
 - Gwendal Bazin [(@Bazni)](https://github.com/Bazni)
 
 ## License
+
 Licensed under MIT license, see [LICENSE](LICENSE) for the full license.
